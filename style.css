@@ -16,8 +16,8 @@ html {
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    color: #374151;
-    background-color: #f9fafb;
+    color: #4a3b2f;
+    background-color: #faf4ec;
     line-height: 1.6;
     min-height: 100vh;
     /* ===== Template general con Grid: header / navbar / searchbar / main / footer ===== */
@@ -33,16 +33,17 @@ body {
 }
 
 a {
-    color: #2563eb;
+    color: #c26d3d;
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
 a:hover {
-    color: #1d4ed8;
+    color: #a3572f;
 }
 
-ul {
+ul,
+ol {
     list-style: none;
 }
 
@@ -50,7 +51,7 @@ ul {
 .site-header,
 header {
     grid-area: header;
-    background-color: #1e3a5f;
+    background-color: #6f4e2f;
     color: #ffffff;
     padding: 0 2rem;
     min-height: var(--header-h);
@@ -69,7 +70,7 @@ header {
         font-weight: 700;
         letter-spacing: -0.02em;
         a:hover {
-            color: #93c5fd;
+            color: #f0d9bd;
         }
         a {
             color: #ffffff;
@@ -84,7 +85,7 @@ nav[aria-label="Navegación principal"] {
 }
 
 .navbar {
-    background-color: #16294a;
+    background-color: #573a22;
     padding: 0.6rem 2rem;
     ul {
         justify-content: center;
@@ -106,8 +107,8 @@ nav[aria-label="Navegación principal"] a {
 }
 
 nav[aria-label="Navegación principal"] a:hover {
-    color: #93c5fd;
-    border-bottom-color: #93c5fd;
+    color: #f0d9bd;
+    border-bottom-color: #f0d9bd;
 }
 
 /* ===== Menú hamburguesa solo HTML + CSS (checkbox hack) ===== */
@@ -145,7 +146,7 @@ nav[aria-label="Navegación principal"] a:hover {
 .search-bar {
     grid-area: searchbar;
     background-color: #ffffff;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e7d9c4;
     padding: 0.9rem 2rem;
     /* Fijo en la parte superior en mobile y desktop, debajo del header */
     position: sticky;
@@ -166,7 +167,7 @@ nav[aria-label="Navegación principal"] a:hover {
 .search-bar label {
     margin: 0;
     font-weight: 600;
-    color: #1e3a5f;
+    color: #6f4e2f;
     font-size: 0.95rem;
     white-space: nowrap;
 }
@@ -175,23 +176,23 @@ nav[aria-label="Navegación principal"] a:hover {
     flex: 1;
     min-width: 0;
     padding: 0.6rem 0.9rem;
-    border: 1px solid #d1d5db;
+    border: 1px solid #cdbb9f;
     border-radius: 6px;
     font-size: 0.95rem;
     font-family: inherit;
-    background-color: #f9fafb;
+    background-color: #faf4ec;
     transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .search-bar input[type="search"]:focus {
     outline: none;
-    border-color: #2563eb;
+    border-color: #c26d3d;
     background-color: #ffffff;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    box-shadow: 0 0 0 3px rgba(194, 109, 61, 0.15);
 }
 
 .search-bar button[type="submit"] {
-    background-color: #2563eb;
+    background-color: #c26d3d;
     color: #ffffff;
     border: none;
     padding: 0.6rem 1.4rem;
@@ -204,7 +205,7 @@ nav[aria-label="Navegación principal"] a:hover {
 }
 
 .search-bar button[type="submit"]:hover {
-    background-color: #1d4ed8;
+    background-color: #a3572f;
 }
 
 /* ===== Navegación breadcrumb ===== */
@@ -222,11 +223,11 @@ nav[aria-label="Ruta de navegación"] a {
 }
 
 nav[aria-label="Ruta de navegación"] a:hover {
-    color: #2563eb;
+    color: #c26d3d;
 }
 
 nav[aria-label="Ruta de navegación"] [aria-current="page"] {
-    color: #374151;
+    color: #4a3b2f;
     font-weight: 600;
 }
 
@@ -262,14 +263,14 @@ aside,
 
 aside {
     background-color: #ffffff;
-    border: 1px solid #e5e7eb;
+    border: 1px solid #e7d9c4;
     border-radius: 8px;
     padding: 1.5rem;
 }
 
 aside h2 {
     font-size: 1.1rem;
-    color: #1e3a5f;
+    color: #6f4e2f;
     margin-bottom: 1rem;
 }
 
@@ -280,7 +281,7 @@ aside nav ul {
 }
 
 aside nav a {
-    color: #374151;
+    color: #4a3b2f;
     font-size: 0.9rem;
     padding: 0.35rem 0.5rem;
     border-radius: 4px;
@@ -288,15 +289,15 @@ aside nav a {
 }
 
 aside nav a:hover {
-    background-color: #eff6ff;
-    color: #2563eb;
+    background-color: #f7ecdf;
+    color: #c26d3d;
 }
 
 /* ===== Filtros de precio y envío en sidebar (solo HTML + CSS) ===== */
 .sidebar .filtros {
     margin-top: 1.5rem;
     padding-top: 1.25rem;
-    border-top: 1px solid #e5e7eb;
+    border-top: 1px solid #e7d9c4;
     max-width: none;
 }
 
@@ -321,19 +322,19 @@ aside nav a:hover {
 .sidebar .filtros input[type="number"] {
     width: 100%;
     padding: 0.55rem 0.7rem;
-    border: 1px solid #d1d5db;
+    border: 1px solid #cdbb9f;
     border-radius: 6px;
     font-size: 0.9rem;
     font-family: inherit;
-    background-color: #f9fafb;
+    background-color: #faf4ec;
     transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .sidebar .filtros input[type="number"]:focus {
     outline: none;
-    border-color: #2563eb;
+    border-color: #c26d3d;
     background-color: #ffffff;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    box-shadow: 0 0 0 3px rgba(194, 109, 61, 0.15);
 }
 
 .sidebar .filtros .check-envio {
@@ -348,13 +349,13 @@ aside nav a:hover {
 .sidebar .filtros input[type="checkbox"] {
     width: 1rem;
     height: 1rem;
-    accent-color: #2563eb;
+    accent-color: #c26d3d;
     cursor: pointer;
 }
 
 .sidebar .filtros button[type="submit"] {
     width: 100%;
-    background-color: #1e3a5f;
+    background-color: #6f4e2f;
     color: #ffffff;
     border: none;
     padding: 0.6rem 1rem;
@@ -366,7 +367,7 @@ aside nav a:hover {
 }
 
 .sidebar .filtros button[type="submit"]:hover {
-    background-color: #2563eb;
+    background-color: #c26d3d;
 }
 
 /* ===== Filtros colapsables solo HTML + CSS (checkbox hack) ===== */
@@ -402,7 +403,7 @@ aside nav a:hover {
 
 #catalogo h2 {
     font-size: 1.3rem;
-    color: #1e3a5f;
+    color: #6f4e2f;
     margin-bottom: 1.5rem;
 }
 
@@ -425,7 +426,7 @@ aside nav a:hover {
     flex: 1 1 100%;
     max-width: 100%;
     background-color: #ffffff;
-    border: 1px solid #e5e7eb;
+    border: 1px solid #e7d9c4;
     border-radius: 8px;
     padding: 1.5rem;
     transition: box-shadow 0.2s ease, border-color 0.2s ease;
@@ -433,22 +434,22 @@ aside nav a:hover {
 
 #catalogo article:hover,
 #catalogo .card:hover {
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
-    border-color: #bfdbfe;
+    box-shadow: 0 4px 12px rgba(194, 109, 61, 0.12);
+    border-color: #e8cfb4;
 }
 
 #catalogo article h3 a {
-    color: #1e3a5f;
+    color: #6f4e2f;
     font-size: 1.15rem;
 }
 
 #catalogo article h3 a:hover {
-    color: #2563eb;
+    color: #c26d3d;
 }
 
 #catalogo article p {
     margin-bottom: 0.35rem;
-    color: #4b5563;
+    color: #6b5542;
     font-size: 0.95rem;
 }
 
@@ -465,7 +466,7 @@ article[aria-label="Ficha del producto"] img {
     object-fit: cover;
     border-radius: 6px;
     margin-bottom: 1rem;
-    background-color: #f3f4f6;
+    background-color: #efe3d2;
     display: block;
 }
 
@@ -508,7 +509,7 @@ article[aria-label="Ficha del producto"] img {
 
 /* ===== Footer ===== */
 footer {
-    background-color: #1e3a5f;
+    background-color: #6f4e2f;
     color: #ffffff;
     padding: 1.5rem 2rem;
     text-align: center;
@@ -518,7 +519,7 @@ footer {
 footer p {
     margin-bottom: 0.75rem;
     font-size: 0.9rem;
-    color: #d1d5db;
+    color: #cdbb9f;
 }
 
 footer nav ul {
@@ -528,7 +529,7 @@ footer nav ul {
 }
 
 footer nav a {
-    color: #93c5fd;
+    color: #f0d9bd;
     font-size: 0.9rem;
     font-weight: 500;
 }
@@ -545,13 +546,13 @@ table {
     background-color: #ffffff;
     border-radius: 8px;
     overflow: hidden;
-    border: 1px solid #e5e7eb;
+    border: 1px solid #e7d9c4;
 }
 
 caption {
     text-align: left;
     font-weight: 600;
-    color: #1e3a5f;
+    color: #6f4e2f;
     padding: 0.75rem 1rem;
     font-size: 1rem;
 }
@@ -559,13 +560,13 @@ caption {
 th, td {
     padding: 0.75rem 1rem;
     text-align: left;
-    border-bottom: 1px solid #f3f4f6;
+    border-bottom: 1px solid #efe3d2;
     font-size: 0.9rem;
 }
 
 thead th {
-    background-color: #f0f4ff;
-    color: #1e3a5f;
+    background-color: #f6ecdf;
+    color: #6f4e2f;
     font-weight: 600;
 }
 
@@ -575,8 +576,8 @@ tbody tr:last-child td {
 
 tfoot td {
     font-weight: 700;
-    background-color: #f9fafb;
-    color: #1e3a5f;
+    background-color: #faf4ec;
+    color: #6f4e2f;
 }
 
 /* ===== Formularios ===== */
@@ -585,7 +586,7 @@ form {
 }
 
 fieldset {
-    border: 1px solid #e5e7eb;
+    border: 1px solid #e7d9c4;
     border-radius: 8px;
     padding: 1.25rem 1.5rem;
     margin-bottom: 1.25rem;
@@ -594,7 +595,7 @@ fieldset {
 
 legend {
     font-weight: 600;
-    color: #1e3a5f;
+    color: #6f4e2f;
     padding: 0 0.5rem;
 }
 
@@ -603,7 +604,7 @@ label {
     margin-top: 0.75rem;
     margin-bottom: 0.25rem;
     font-size: 0.9rem;
-    color: #374151;
+    color: #4a3b2f;
 }
 
 input[type="text"],
@@ -612,7 +613,7 @@ input[type="tel"],
 textarea {
     width: 100%;
     padding: 0.6rem 0.75rem;
-    border: 1px solid #d1d5db;
+    border: 1px solid #cdbb9f;
     border-radius: 6px;
     font-size: 0.95rem;
     font-family: inherit;
@@ -622,8 +623,8 @@ textarea {
 
 input:focus, textarea:focus {
     outline: none;
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    border-color: #c26d3d;
+    box-shadow: 0 0 0 3px rgba(194, 109, 61, 0.15);
 }
 
 input[type="radio"] {
@@ -633,7 +634,7 @@ input[type="radio"] {
 
 
 input[type="submit"] {
-    background-color: #2563eb;
+    background-color: #c26d3d;
     color: #ffffff;
     border: none;
     padding: 0.7rem 1.5rem;
@@ -646,12 +647,12 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #1d4ed8;
+    background-color: #a3572f;
 }
 
 [role="button"] {
     display: inline-block;
-    background-color: #2563eb;
+    background-color: #c26d3d;
     color: #ffffff;
     padding: 0.6rem 1.25rem;
     border-radius: 6px;
@@ -660,20 +661,20 @@ input[type="submit"]:hover {
 }
 
 [role="button"]:hover {
-    background-color: #1d4ed8;
+    background-color: #a3572f;
     color: #ffffff;
 }
 
 /* ===== Artículo producto ===== */
 article[aria-label="Ficha del producto"] {
     background-color: #ffffff;
-    border: 1px solid #e5e7eb;
+    border: 1px solid #e7d9c4;
     border-radius: 8px;
     padding: 2rem;
 }
 
 article[aria-label="Ficha del producto"] h2 {
-    color: #1e3a5f;
+    color: #6f4e2f;
     margin-bottom: 0.75rem;
 }
 
@@ -682,7 +683,7 @@ article[aria-label="Ficha del producto"] section {
 }
 
 article[aria-label="Ficha del producto"] h3 {
-    color: #1e3a5f;
+    color: #6f4e2f;
     margin-bottom: 0.5rem;
 }
 
@@ -693,7 +694,7 @@ section[aria-label] {
 
 h2 {
     font-size: 1.3rem;
-    color: #1e3a5f;
+    color: #6f4e2f;
 }
 
 h3 {
@@ -769,7 +770,7 @@ h3 {
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        background-color: #1e3a5f;
+        background-color: #6f4e2f;
         color: #ffffff;
         font-weight: 600;
         font-size: 0.95rem;

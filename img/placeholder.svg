@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="360" viewBox="0 0 480 360" role="img" aria-label="Imagen de producto de La Casa de los Hilos">
+  <rect width="480" height="360" fill="#f4eadb"/>
+  <path d="M0 0 L480 360 M480 0 L0 360" stroke="#ddc8a8" stroke-width="6" opacity="0.7"/>
+  <g stroke="#e8d5b8" stroke-width="2" opacity="0.5">
+    <path d="M120 0 L240 360 M240 0 L360 360 M360 0 L480 360 M0 120 L480 240 M0 240 L480 120"/>
+  </g>
+  <text x="240" y="196" font-family="sans-serif" font-size="24" fill="#8a6b4a" text-anchor="middle">La Casa de los Hilos</text>
+</svg>

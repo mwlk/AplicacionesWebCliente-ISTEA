@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Catálogo de productos Apple: MacBook, iPhone, iPad, Apple Watch y más.">
-    <title>Apple Store | Catálogo de Productos</title>
+    <meta name="description" content="Catálogo de artículos textiles: hilos, lanas, telas, kits de tejido y accesorios.">
+    <title>La Casa de los Hilos | Catálogo de Artículos Textiles</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,8 +12,7 @@
     <input type="checkbox" id="menu-toggle" class="menu-toggle" tabindex="-1" aria-hidden="true">
 
     <header class="site-header">
-        <img src="./img/logo.png" alt="Apple Logo" width="40">
-        <h1><a href="index.html">Apple Store</a></h1>
+        <h1><a href="index.html">La Casa de los Hilos</a></h1>
         <label for="menu-toggle" class="hamburger" aria-label="Abrir o cerrar menú de navegación">
             <span></span>
             <span></span>
@@ -25,6 +24,7 @@
         <ul>
             <li><a href="index.html">Inicio</a></li>
             <li><a href="index.html#catalogo">Catálogo</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
             <li><a href="carrito.html">Carrito</a></li>
             <li><a href="contacto.html">Contacto</a></li>
         </ul>
@@ -33,7 +33,7 @@
     <div class="search-bar">
         <form role="search" method="get" action="#catalogo" aria-label="Buscador de productos">
             <label for="buscar">Buscar productos</label>
-            <input type="search" id="buscar" name="buscar" placeholder="Buscar productos… Ej: iPhone, MacBook, iPad" autocomplete="off">
+            <input type="search" id="buscar" name="buscar" placeholder="Buscar productos… Ej: algodón, lana merino, lino" autocomplete="off">
             <button type="submit">Buscar</button>
         </form>
     </div>
@@ -50,11 +50,11 @@
             <nav aria-label="Filtros de productos">
                 <ul>
                     <li><a href="#catalogo">Todos los productos</a></li>
-                    <li><a href="#macbook">MacBook</a></li>
-                    <li><a href="#iphone">iPhone</a></li>
-                    <li><a href="#ipad">iPad</a></li>
-                    <li><a href="#watch">Apple Watch</a></li>
-                    <li><a href="#airpods">AirPods</a></li>
+                    <li><a href="#hilos">Hilos</a></li>
+                    <li><a href="#lanas">Lanas</a></li>
+                    <li><a href="#telas">Telas</a></li>
+                    <li><a href="#kits">Kits de tejido</a></li>
+                    <li><a href="#agujas">Agujas</a></li>
                     <li><a href="#accesorios">Accesorios</a></li>
                 </ul>
             </nav>
@@ -63,9 +63,9 @@
                 <fieldset>
                     <legend>Precio</legend>
                     <label for="precio-min">Precio mínimo</label>
-                    <input type="number" id="precio-min" name="precio-min" min="0" step="1000" placeholder="Mín. Ej: 100000">
+                    <input type="number" id="precio-min" name="precio-min" min="0" step="100" placeholder="Mín. Ej: 1000">
                     <label for="precio-max">Precio máximo</label>
-                    <input type="number" id="precio-max" name="precio-max" min="0" step="1000" placeholder="Máx. Ej: 1500000">
+                    <input type="number" id="precio-max" name="precio-max" min="0" step="100" placeholder="Máx. Ej: 30000">
                 </fieldset>
                 <fieldset>
                     <legend>Envío</legend>
@@ -83,52 +83,52 @@
             <h2>Catálogo de productos</h2>
 
             <div class="productos">
-            <article id="macbook" class="card">
-                <img src="https://tse1.mm.bing.net/th/id/OIP.ccdzvcFZfXSDIcyYsRmzBAHaGY?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="MacBook Air M3" loading="lazy">
-                <h3><a href="producto.html">MacBook Air M3</a></h3>
-                <p>Notebook ultradelgado con chip M4, 13 pulgadas.</p>
-                <p>Precio: $1.199.000</p>
-                <p><a href="producto.html" aria-label="Ver detalle de MacBook Air M3">Ver detalle &rarr;</a></p>
+            <article id="hilos" class="card">
+                <img src="img/placeholder.svg" alt="Ovillo de Algodón Torzal" loading="lazy">
+                <h3><a href="producto.html">Ovillo de Algodón Torzal</a></h3>
+                <p>Hilo de algodón torzal mercerizado, 100 g.</p>
+                <p>Precio: $3.500</p>
+                <p><a href="producto.html" aria-label="Ver detalle de Ovillo de Algodón Torzal">Ver detalle &rarr;</a></p>
             </article>
 
-            <article id="iphone" class="card">
-                <img src="https://tse1.mm.bing.net/th/id/OIP.ccdzvcFZfXSDIcyYsRmzBAHaGY?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="iPhone 15 Pro" loading="lazy">
-                <h3><a href="producto.html">iPhone 15 Pro</a></h3>
-                <p>Smartphone con chip A17 Pro, cámara de 48MP y titanio.</p>
-                <p>Precio: $1.599.000</p>
-                <p><a href="producto.html" aria-label="Ver detalle de iPhone 15 Pro">Ver detalle &rarr;</a></p>
+            <article id="lanas" class="card">
+                <img src="img/placeholder.svg" alt="Lana Merino Premium" loading="lazy">
+                <h3><a href="producto.html">Lana Merino Premium</a></h3>
+                <p>Lana 100% merino, suave y abrigada, 50 g.</p>
+                <p>Precio: $6.800</p>
+                <p><a href="producto.html" aria-label="Ver detalle de Lana Merino Premium">Ver detalle &rarr;</a></p>
             </article>
 
-            <article id="ipad" class="card">
-                <img src="https://tse1.mm.bing.net/th/id/OIP.ccdzvcFZfXSDIcyYsRmzBAHaGY?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="iPad Air" loading="lazy">
-                <h3><a href="producto.html">iPad Air</a></h3>
-                <p>Tablet con chip M2, pantalla Liquid Retina de 11 pulgadas.</p>
-                <p>Precio: $999.000</p>
-                <p><a href="producto.html" aria-label="Ver detalle de iPad Air">Ver detalle &rarr;</a></p>
+            <article id="telas" class="card">
+                <img src="img/placeholder.svg" alt="Tela de Lino Natural" loading="lazy">
+                <h3><a href="producto.html">Tela de Lino Natural</a></h3>
+                <p>Lino 100% algodón, 150 cm de ancho, por metro.</p>
+                <p>Precio: $4.200</p>
+                <p><a href="producto.html" aria-label="Ver detalle de Tela de Lino Natural">Ver detalle &rarr;</a></p>
             </article>
 
-            <article id="watch" class="card">
-                <img src="https://tse1.mm.bing.net/th/id/OIP.ccdzvcFZfXSDIcyYsRmzBAHaGY?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Apple Watch Series 9" loading="lazy">
-                <h3><a href="producto.html">Apple Watch Series 9</a></h3>
-                <p>Reloj inteligente con GPS y detección de accidentes.</p>
-                <p>Precio: $549.000</p>
-                <p><a href="producto.html" aria-label="Ver detalle de Apple Watch Series 9">Ver detalle &rarr;</a></p>
+            <article id="kits" class="card">
+                <img src="img/placeholder.svg" alt="Kit de Tejido a Dos Agujas" loading="lazy">
+                <h3><a href="producto.html">Kit de Tejido a Dos Agujas</a></h3>
+                <p>Kit para principiantes: lana, agujas y tutorial.</p>
+                <p>Precio: $15.900</p>
+                <p><a href="producto.html" aria-label="Ver detalle de Kit de Tejido a Dos Agujas">Ver detalle &rarr;</a></p>
             </article>
 
-            <article id="airpods" class="card">
-                <img src="https://tse1.mm.bing.net/th/id/OIP.ccdzvcFZfXSDIcyYsRmzBAHaGY?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="AirPods Pro 2" loading="lazy">
-                <h3><a href="producto.html">AirPods Pro 2</a></h3>
-                <p>Auriculares inalámbricos con cancelación activa de ruido.</p>
-                <p>Precio: $349.000</p>
-                <p><a href="producto.html" aria-label="Ver detalle de AirPods Pro 2">Ver detalle &rarr;</a></p>
+            <article id="agujas" class="card">
+                <img src="img/placeholder.svg" alt="Agujas de Tejer, par de 4 mm" loading="lazy">
+                <h3><a href="producto.html">Agujas de Tejer (Par)</a></h3>
+                <p>Agujas de aluminio de 4 mm, con punta suave.</p>
+                <p>Precio: $2.100</p>
+                <p><a href="producto.html" aria-label="Ver detalle de Agujas de Tejer">Ver detalle &rarr;</a></p>
             </article>
 
             <article id="accesorios" class="card">
-                <img src="https://tse1.mm.bing.net/th/id/OIP.ccdzvcFZfXSDIcyYsRmzBAHaGY?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Magic Mouse" loading="lazy">
-                <h3><a href="producto.html">Magic Mouse</a></h3>
-                <p>Mouse inalámbrico recargable con Multi-Touch.</p>
-                <p>Precio: $129.000</p>
-                <p><a href="producto.html" aria-label="Ver detalle de Magic Mouse">Ver detalle &rarr;</a></p>
+                <img src="img/placeholder.svg" alt="Telar de Mesa de madera" loading="lazy">
+                <h3><a href="producto.html">Telar de Mesa</a></h3>
+                <p>Telar de madera de pino, 40 cm.</p>
+                <p>Precio: $28.500</p>
+                <p><a href="producto.html" aria-label="Ver detalle de Telar de Mesa">Ver detalle &rarr;</a></p>
             </article>
             </div>
 
@@ -137,15 +137,16 @@
     </main>
 
     <footer id="contacto">
-        <p>&copy; 2026 Apple Store. Todos los derechos reservados.</p>
+        <p>&copy; 2026 La Casa de los Hilos. Todos los derechos reservados.</p>
         <nav aria-label="Redes sociales">
             <ul>
-                <li><a href="https://instagram.com/apple" rel="noopener noreferrer" target="_blank">Instagram</a></li>
-                <li><a href="https://x.com/apple" rel="noopener noreferrer" target="_blank">X (Twitter)</a></li>
-                <li><a href="https://youtube.com/apple" rel="noopener noreferrer" target="_blank">YouTube</a></li>
+                <li><a href="https://instagram.com" rel="noopener noreferrer" target="_blank">Instagram</a></li>
+                <li><a href="https://x.com" rel="noopener noreferrer" target="_blank">X (Twitter)</a></li>
+                <li><a href="https://youtube.com" rel="noopener noreferrer" target="_blank">YouTube</a></li>
             </ul>
         </nav>
     </footer>
 
+    <script src="js/main.js"></script>
 </body>
 </html>

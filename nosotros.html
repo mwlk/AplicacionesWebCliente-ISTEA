@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conocé quiénes somos: La Casa de los Hilos, tu tienda de artículos textiles.">
+    <title>Nosotros | La Casa de los Hilos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <input type="checkbox" id="menu-toggle" class="menu-toggle" tabindex="-1" aria-hidden="true">
+
+    <header class="site-header">
+        <h1><a href="index.html">La Casa de los Hilos</a></h1>
+        <label for="menu-toggle" class="hamburger" aria-label="Abrir o cerrar menú de navegación">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+    </header>
+
+    <nav class="navbar" aria-label="Navegación principal">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="index.html#catalogo">Catálogo</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="carrito.html">Carrito</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <nav aria-label="Ruta de navegación">
+            <ol>
+                <li><a href="index.html">Inicio</a></li>
+                <li aria-current="page">Nosotros</li>
+            </ol>
+        </nav>
+
+        <h2>Quiénes somos</h2>
+
+        <section aria-label="Nuestra historia">
+            <h3>Nuestra historia</h3>
+            <p>
+                La Casa de los Hilos nace de una pasión por el tejido y el trabajo
+                artesanal. Desde nuestros comienzos quisimos compartir los mejores
+                hilos, lanas y telas para que cada persona pueda crear sus propias
+                prendas y proyectos con la mejor materia prima.
+            </p>
+        </section>
+
+        <section aria-label="Nuestra misión">
+            <h3>Nuestra misión</h3>
+            <p>
+                Acompañar a tejedoras y tejedores de todos los niveles, ofreciendo
+                productos de calidad, asesoramiento cercano y todo lo necesario para
+                que cada proyecto textil se haga realidad.
+            </p>
+        </section>
+
+        <section aria-label="Nuestros valores">
+            <h3>Nuestros valores</h3>
+            <ul>
+                <li>Calidad de los materiales y proveniencia responsable.</li>
+                <li>Atención personalizada a cada cliente.</li>
+                <li>Fomento del tejido como tradición cultural.</li>
+                <li>Envíos cuidados y precios accesibles.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer id="contacto">
+        <p>&copy; 2026 La Casa de los Hilos. Todos los derechos reservados.</p>
+        <nav aria-label="Redes sociales">
+            <ul>
+                <li><a href="https://instagram.com" rel="noopener noreferrer" target="_blank">Instagram</a></li>
+                <li><a href="https://x.com" rel="noopener noreferrer" target="_blank">X (Twitter)</a></li>
+                <li><a href="https://youtube.com" rel="noopener noreferrer" target="_blank">YouTube</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
