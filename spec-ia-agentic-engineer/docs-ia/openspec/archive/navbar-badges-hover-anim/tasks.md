@@ -16,9 +16,9 @@
 
 ### 1.2 Badge de estado en las cards
 
-- [x] 1.2.1 `:root`: agregar `--badge-nuevo: #0f5132` y `--badge-oferta: #8a2f1f` (blanco > 7:1, documentado).
-- [x] 1.2.2 CSS `.badge` / `.badge--nuevo` / `.badge--oferta`: pill absoluto sobre la imagen, texto blanco, tamano xs, uppercase.
-- [x] 1.2.3 `index.html`: agregar `<span class="badge badge--nuevo">Nuevo</span>` y `<span class="badge badge--oferta">Oferta</span>` en 4 cards (2 y 2).
+- [x] 1.2.1 `:root`: agregar `--badge-new: #0f5132` y `--badge-sale: #8a2f1f` (blanco > 7:1, documentado).
+- [x] 1.2.2 CSS `.badge` / `.badge--new` / `.badge--sale`: pill absoluto sobre la imagen, texto blanco, tamano xs, uppercase.
+- [x] 1.2.3 `index.html`: agregar `<span class="badge badge--new">Nuevo</span>` y `<span class="badge badge--sale">Oferta</span>` en 4 cards (2 y 2).
 
 ### 1.3 Hover de cards (lift + scale)
 
@@ -46,7 +46,7 @@
 ## 2. Validacion
 
 - [x] 2.1 Verificacion estatica: llaves CSS balanceadas (158/158); tokens y reglas nuevas presentes; clases `.badge` usadas en el HTML tienen regla; sin `&rarr;` restantes.
-- [x] 2.2 Contraste: `--badge-nuevo` con blanco = 9.36:1 y `--badge-oferta` = 8.38:1 (ambos >= 7:1, WCAG AAA); CTA "Ver detalle" blanco sobre `--brand-accent` = 7.92:1 y `--brand-accent-hover` = 9.21:1. Todo documentado en `lite.md`.
+- [x] 2.2 Contraste: `--badge-new` con blanco = 9.36:1 y `--badge-sale` = 8.38:1 (ambos >= 7:1, WCAG AAA); CTA "Ver detalle" blanco sobre `--brand-accent` = 7.92:1 y `--brand-accent-hover` = 9.21:1. Todo documentado en `lite.md`.
 - [x] 2.3 Verificacion manual en browser (desktop + mobile) confirmada por el usuario: hover lift+scale OK; resto de escenarios cubierto en `/sdd-review` (navbar al scroll, drawer encima de searchbar, badges, entrada escalonada, reduced-motion estatico).
 - [x] 2.4 Confirmados los escenarios de `lite.md` (veredicto `/sdd-review`: PASS WITH GAPS, gap pendiente resuelto).
 - [x] 2.5 Cursor agrandado: DESCARTADO del scope del change — causa a nivel OS (cursor theme `Breeze_Light` + Chromium sobre Wayland, se reproduce en otras apps, sin `transform`/`scale` en el CSS del sitio). Mitigado en el entorno (KWin `kcminputrc` + gsettings + `gtk-3.0/4.0/settings.ini` a `Adwaita`, size 24). El `scale(1.02)` del hover se restauro y funciona OK.
