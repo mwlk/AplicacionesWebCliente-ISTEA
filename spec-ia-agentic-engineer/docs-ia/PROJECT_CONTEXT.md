@@ -11,8 +11,8 @@ online: landing/catálogo, detalle de producto, carrito y contacto.
 
 ## Stack detectado
 
-- **HTML5** puro: `index.html` (landing + catálogo con filtros), `producto.html`
-  (detalle + especificaciones), `carrito.html`, `contacto.html`, `nosotros.html`
+- **HTML5** puro: `index.html` (landing + catálogo con filtros), `product.html`
+  (detalle + especificaciones), `cart.html`, `contact.html`, `about.html`
 - **CSS** puro: `style.css` (header, navbar, catálogo, footer, responsive)
 - **JS** vanilla: `js/main.js` (base/placeholder, sin lógica de negocio todavía)
 - **Supabase** (planificado, no conectado aún): backend-as-a-service para
@@ -27,10 +27,10 @@ online: landing/catálogo, detalle de producto, carrito y contacto.
 ```
 AplicacionesWebCliente-ISTEA/
 ├── index.html        # landing: header + filtro categorias + catalogo + footer
-├── producto.html     # detalle de articulo textil con especificaciones
-├── carrito.html      # pantalla de carrito + formulario de compra
-├── contacto.html     # pantalla de contacto
-├── nosotros.html     # seccion "quiénes somos"
+├── product.html     # detalle de articulo textil con especificaciones
+├── cart.html      # pantalla de carrito + formulario de compra
+├── contact.html     # pantalla de contacto
+├── about.html     # seccion "quiénes somos"
 ├── style.css         # estilos de todo el sitio
 ├── js/main.js        # script base (placeholder)
 ├── img/              # imágenes (ej. placeholder.svg; logo real pendiente)
@@ -59,6 +59,10 @@ AplicacionesWebCliente-ISTEA/
 
 - Sin capa de errores de backend. Validación de formularios del lado cliente (HTML nativo) si corresponde.
 - Mantener HTML semántico y accesible (materia de frontend web).
+- **Accesibilidad (WCAG AAA)**: todo texto debe cumplir contraste ≥ 7:1 sobre su
+  fondo. Los colores viven como tokens en `:root` (`style.css`) y están calibrados
+  para AAA; no usar valores de color fuera de los tokens (ni modificar los tokens
+  sin recalcular el contraste de cada par afectado).
 
 ## Convenciones de tests
 

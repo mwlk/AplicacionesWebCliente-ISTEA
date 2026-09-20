@@ -33,6 +33,10 @@
 
 ## 3. Cierre
 
-- [x] 3.1 Decidido: no correr `/sdd-document` por ahora; documentacion suficiente con `tasks.md` y este `lite.md`.
-- [ ] 3.2 Evaluar si el change crecio y amerita full (`proposal.md`/`design.md`/`specs/`). El esquema de Supabase y la logica de negocio se tratan como changes propios (el de esquema probablemente full).
-- [ ] 3.3 Archivar con `/sdd-archive` cuando este listo.
+- [x] 3.1 Decidido: no correr `/sdd-document`; documentacion suficiente con `tasks.md` y este `lite.md`.
+- [x] 3.2 Evaluado: el change permanece lite; no hay `specs/` ni contrato estable que fusionar. El esquema de Supabase y logica de negocio se tratan como changes propios.
+- [x] 3.3 Archivado con `/sdd-archive`.
+
+Pendientes justificados post-archive:
+- [ ] 2.2 Verificacion visual manual en browser (desktop y mobile) — queda a cargo de la persona.
+- [ ] 2.3 Confirmar los escenarios de `lite.md` cubiertos — queda a cargo de la persona.
