@@ -1,8 +1,76 @@
-/* ===== Reset y base ===== */
+/* ==========================================================================
+   La Casa de los Hilos — style.css
+   Refactor UX/UI responsive (mobile, tablet, desktop).
+   ========================================================================== */
+
+/* ===== 1) Variables de diseno (design tokens) =====
+   Todas las decisiones de color, tipografia y espaciado viven aca, en :root.
+   Header, nav, main y footer las consumen; no hay valores magicos.
+   Nombres en ingles, esquema semantico estilo Bootstrap:
+   primary/secondary/success/danger/warning/info/light/dark + neutros. */
 :root {
-    --header-h: 60px;
+    /* --- Brand (marca de "La Casa de los Hilos") --- */
+    --brand-primary: #6f4e2f;        /* Marron principal: header, titulos, footer */
+    --brand-secondary: #573a22;      /* Marron navegacion (barra desktop / drawer mobile) */
+    --brand-accent: #873a1d;         /* Terracota marca (WCAG AAA: >=7:1 con blanco y sobre --light) */
+    --brand-accent-hover: #7a3118;   /* Terracota oscuro: hover de botones */
+
+    /* --- Semantic colors (esquema Bootstrap) --- */
+    --primary: #6f4e2f;              /* Accion principal / marca */
+    --secondary: #573a22;            /* Complementario / navegacion */
+    --success: #2f8f4e;              /* Estados de exito */
+    --danger: #c0392b;               /* Errores / acciones destructivas */
+    --warning: #d4872a;              /* Avisos / alertas */
+    --info: #4a8fb0;                 /* Informacion / ayuda */
+    --light: #faf4ec;                /* Fondo claro general (tono hueso) */
+    --dark: #4a3b2f;                 /* Texto principal oscuro */
+
+    /* --- Grays / neutros --- */
+    --white: #ffffff;                /* Texto sobre marrones, fondo de tarjetas */
+    --gray-100: #faf4ec;             /* Fondo general (alias de --light) */
+    --gray-200: #efe3d2;             /* Placeholder de imagenes, fondos suaves */
+    --gray-300: #e7d9c4;             /* Bordes de tarjetas, tablas, asides; texto secundario en footer */
+    --gray-400: #cdbb9f;             /* Bordes de inputs */
+    --gray-500: #5f4a39;             /* Texto secundario (descripciones) — WCAG AAA sobre --white */
+    --gray-600: #404852;             /* Texto breadcrumb / gris de apoyo — WCAG AAA sobre --light */
+    --gray-700: #573a22;             /* Marron navegacion (alias de --secondary) */
+    --gray-800: #4a3b2f;             /* Texto principal (alias de --dark) */
+    --gray-900: #3a2d22;             /* Marron profundo */
+
+    --light-hover: #fffdfa;          /* Casi blanco: hover de links claros e texto en footer (AAA sobre marrones) */
+
+    /* --- Typography --- */
+    --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-size-h1: 1.5rem;          /* Titulo del branding (header) */
+    --font-size-h2: 1.3rem;          /* Titulos de seccion/catalogo */
+    --font-size-h3: 1.1rem;          /* Titulos de tarjeta/subseccion */
+    --font-size-base: 0.95rem;       /* Texto comun de navegacion y cuerpo */
+    --font-size-sm: 0.9rem;          /* Texto pequeno (inputs, tablas) */
+    --font-size-xs: 0.85rem;         /* Microtexto (breadcrumb mobile) */
+    --line-height-base: 1.6;         /* Alto de linea del cuerpo */
+
+    /* --- Spacing --- */
+    --space-xs: 0.35rem;             /* Micro separaciones */
+    --space-sm: 0.5rem;              /* Gap chico dentro de componentes */
+    --space-md: 1rem;                /* Gap comun entre items */
+    --space-lg: 1.5rem;              /* Gap entre bloques grandes */
+    --space-xl: 2rem;                /* Padding de main */
+    --card-padding: 1.5rem;          /* Padding interno de las cards */
+    --border-radius-sm: 6px;         /* Radio de inputs y botones */
+    --border-radius-lg: 8px;         /* Radio de tarjetas y cajas */
+
+    /* --- Layout --- */
+    --header-height: 60px;           /* Altura de header/navbar */
+    --sidebar-width: 220px;          /* Ancho de sidebar de filtros (desktop) y drawer (mobile) */
+    --content-max-width: 1200px;     /* Ancho maximo de main */
+    --catalog-gap: 1.25rem;          /* Separacion entre tarjetas del catalogo */
+
+    /* --- Breakpoints --- */
+    --bp-tablet: 600px;              /* Desde aca: 2 columnas en catalogo */
+    --bp-desktop: 1024px;            /* Desde aca: 3 columnas + barra nav unificada */
 }
 
+/* ===== Reset y base ===== */
 *, *::before, *::after {
     margin: 0;
     padding: 0;
@@ -15,9 +83,9 @@ html {
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    color: #4a3b2f;
-    background-color: #faf4ec;
+    font-family: var(--font-family-base);
+    color: var(--dark);
+    background-color: var(--light);
     line-height: 1.6;
     min-height: 100vh;
     /* ===== Template general con Grid: header / navbar / searchbar / main / footer ===== */
@@ -33,13 +101,13 @@ body {
 }
 
 a {
-    color: #c26d3d;
+    color: var(--brand-accent);
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
 a:hover {
-    color: #a3572f;
+    color: var(--brand-accent-hover);
 }
 
 ul,
@@ -47,14 +115,13 @@ ol {
     list-style: none;
 }
 
-/* ===== Header ===== */
-.site-header,
-header {
+/* ===== Header (Clase 1: estilo propio) ===== */
+.site-header {
     grid-area: header;
-    background-color: #6f4e2f;
-    color: #ffffff;
-    padding: 0 2rem;
-    min-height: var(--header-h);
+    background-color: var(--brand-primary);
+    color: var(--white);
+    padding: 0 var(--space-xl);
+    min-height: var(--header-height);
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -66,53 +133,75 @@ header {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 
     h1 {
-        font-size: 1.5rem;
+        font-size: var(--font-size-h1);
         font-weight: 700;
         letter-spacing: -0.02em;
-        a:hover {
-            color: #f0d9bd;
-        }
         a {
-            color: #ffffff;
+            color: var(--white);
+            &:hover {
+                color: var(--light-hover);
+            }
         }
     }
 }
 
-/* ===== Navegación principal (navbar del layout Grid) ===== */
-.navbar,
-nav[aria-label="Navegación principal"] {
-    grid-area: navbar;
-}
-
+/* ===== Navegacion principal (Clase 1: estilo propio) =====
+   Desktop: barra horizontal con logo a la izquierda (branding del header),
+   links centrados y boton a la derecha, usando display:flex + gap.
+   Mobile: el mismo <nav> se convierte en sidebar drawer ocultable. */
 .navbar {
-    background-color: #573a22;
-    padding: 0.6rem 2rem;
-    ul {
-        justify-content: center;
-    }
-}
-
-nav[aria-label="Navegación principal"] ul {
+    grid-area: navbar;
+    background-color: var(--brand-secondary);
     display: flex;
-    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: var(--space-md);
+    padding: 0 var(--space-md);
 }
 
-nav[aria-label="Navegación principal"] a {
-    color: #ffffff;
+/* Links centrados en el espacio disponible */
+.navbar .nav-links {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: var(--space-lg);
+}
+
+.navbar .nav-links a {
+    color: var(--white);
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: var(--font-size-base);
     padding: 0.35rem 0;
     border-bottom: 2px solid transparent;
     transition: color 0.2s ease, border-color 0.2s ease;
+    white-space: nowrap;
 }
 
-nav[aria-label="Navegación principal"] a:hover {
-    color: #f0d9bd;
-    border-bottom-color: #f0d9bd;
+.navbar .nav-links a:hover {
+    color: var(--light-hover);
+    border-bottom-color: var(--light-hover);
 }
 
-/* ===== Menú hamburguesa solo HTML + CSS (checkbox hack) ===== */
-/* El checkbox queda oculto pero funcional vía el <label> */
+/* Boton a la derecha (CTA) */
+.navbar .nav-boton {
+    margin-left: auto;
+    background-color: var(--brand-accent);
+    color: var(--white);
+    padding: 0.55rem 1.25rem;
+    border-radius: var(--border-radius-sm);
+    font-weight: 600;
+    font-size: var(--font-size-base);
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+}
+
+.navbar .nav-boton:hover {
+    background-color: var(--brand-accent-hover);
+    color: var(--white);
+}
+
+/* ===== Menu hamburguesa solo HTML + CSS (checkbox hack) =====
+   En desktop no se usa; en mobile abre el drawer. */
 .menu-toggle {
     position: absolute;
     opacity: 0;
@@ -122,7 +211,6 @@ nav[aria-label="Navegación principal"] a:hover {
     pointer-events: none;
 }
 
-/* En desktop el botón hamburguesa no se muestra */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -138,25 +226,24 @@ nav[aria-label="Navegación principal"] a:hover {
     width: 25px;
     height: 3px;
     border-radius: 2px;
-    background-color: #ffffff;
+    background-color: var(--white);
     transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 /* ===== Buscador de productos (solo HTML + CSS, sin JS) ===== */
 .search-bar {
     grid-area: searchbar;
-    background-color: #ffffff;
-    border-bottom: 1px solid #e7d9c4;
-    padding: 0.9rem 2rem;
-    /* Fijo en la parte superior en mobile y desktop, debajo del header */
+    background-color: var(--white);
+    border-bottom: 1px solid var(--gray-300);
+    padding: 0.9rem var(--space-xl);
     position: sticky;
-    top: var(--header-h);
+    top: var(--header-height);
     z-index: 900;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
 }
 
 .search-bar form[role="search"] {
-    max-width: 1200px;
+    max-width: var(--content-max-width);
     margin: 0 auto;
     display: flex;
     gap: 0.6rem;
@@ -167,8 +254,8 @@ nav[aria-label="Navegación principal"] a:hover {
 .search-bar label {
     margin: 0;
     font-weight: 600;
-    color: #6f4e2f;
-    font-size: 0.95rem;
+    color: var(--brand-primary);
+    font-size: var(--font-size-base);
     white-space: nowrap;
 }
 
@@ -176,28 +263,28 @@ nav[aria-label="Navegación principal"] a:hover {
     flex: 1;
     min-width: 0;
     padding: 0.6rem 0.9rem;
-    border: 1px solid #cdbb9f;
-    border-radius: 6px;
-    font-size: 0.95rem;
+    border: 1px solid var(--gray-400);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-base);
     font-family: inherit;
-    background-color: #faf4ec;
+    background-color: var(--light);
     transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .search-bar input[type="search"]:focus {
     outline: none;
-    border-color: #c26d3d;
-    background-color: #ffffff;
-    box-shadow: 0 0 0 3px rgba(194, 109, 61, 0.15);
+    border-color: var(--brand-accent);
+    background-color: var(--white);
+    box-shadow: 0 0 0 3px rgba(163, 87, 47, 0.15);
 }
 
 .search-bar button[type="submit"] {
-    background-color: #c26d3d;
-    color: #ffffff;
+    background-color: var(--brand-accent);
+    color: var(--white);
     border: none;
     padding: 0.6rem 1.4rem;
-    border-radius: 6px;
-    font-size: 0.95rem;
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-base);
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.2s ease;
@@ -205,53 +292,49 @@ nav[aria-label="Navegación principal"] a:hover {
 }
 
 .search-bar button[type="submit"]:hover {
-    background-color: #a3572f;
+    background-color: var(--brand-accent-hover);
 }
 
-/* ===== Navegación breadcrumb ===== */
+/* ===== Breadcrumb (Ruta de navegacion) ===== */
 nav[aria-label="Ruta de navegación"] ol {
     display: flex;
-    gap: 0.5rem;
+    gap: var(--space-sm);
     flex-wrap: wrap;
-    font-size: 0.85rem;
-    color: #6b7280;
-    margin-bottom: 1.5rem;
+    font-size: var(--font-size-xs);
+    color: var(--gray-600);
+    margin-bottom: var(--space-lg);
 }
 
 nav[aria-label="Ruta de navegación"] a {
-    color: #6b7280;
+    color: var(--gray-600);
 }
 
 nav[aria-label="Ruta de navegación"] a:hover {
-    color: #c26d3d;
+    color: var(--brand-accent);
 }
 
 nav[aria-label="Ruta de navegación"] [aria-current="page"] {
-    color: #4a3b2f;
+    color: var(--dark);
     font-weight: 600;
 }
 
-/* ===== Layout principal (index) ===== */
+/* ===== Main (Clase 1: estilo propio) ===== */
 main {
     grid-area: main;
-    max-width: 1200px;
+    max-width: var(--content-max-width);
     width: 100%;
     margin: 0 auto;
-    padding: 2rem;
-}
-
-footer {
-    grid-area: footer;
+    padding: var(--space-xl);
 }
 
 #inicio {
-    /* Sub-grid del contenido: sidebar + catálogo */
+    /* Sub-grid del contenido: sidebar + catalogo */
     display: grid;
     grid-template-areas:
         "sidebar"
         "catalogo";
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: var(--space-xl);
     align-items: start;
 }
 
@@ -262,112 +345,112 @@ aside,
 }
 
 aside {
-    background-color: #ffffff;
-    border: 1px solid #e7d9c4;
-    border-radius: 8px;
-    padding: 1.5rem;
+    background-color: var(--white);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-lg);
 }
 
 aside h2 {
-    font-size: 1.1rem;
-    color: #6f4e2f;
-    margin-bottom: 1rem;
+    font-size: var(--font-size-h3);
+    color: var(--brand-primary);
+    margin-bottom: var(--space-md);
 }
 
 aside nav ul {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--space-sm);
 }
 
 aside nav a {
-    color: #4a3b2f;
-    font-size: 0.9rem;
+    color: var(--dark);
+    font-size: var(--font-size-sm);
     padding: 0.35rem 0.5rem;
     border-radius: 4px;
     display: block;
 }
 
 aside nav a:hover {
-    background-color: #f7ecdf;
-    color: #c26d3d;
+    background-color: var(--gray-200);
+    color: var(--brand-accent);
 }
 
-/* ===== Filtros de precio y envío en sidebar (solo HTML + CSS) ===== */
+/* ===== Filtros de precio y envio en sidebar (solo HTML + CSS) ===== */
 .sidebar .filtros {
-    margin-top: 1.5rem;
+    margin-top: var(--space-lg);
     padding-top: 1.25rem;
-    border-top: 1px solid #e7d9c4;
+    border-top: 1px solid var(--gray-300);
     max-width: none;
 }
 
 .sidebar .filtros fieldset {
     border: 0;
     padding: 0;
-    margin: 0 0 1rem;
+    margin: 0 0 var(--space-md);
     background-color: transparent;
 }
 
 .sidebar .filtros legend {
     padding: 0;
-    margin-bottom: 0.5rem;
-    font-size: 0.95rem;
+    margin-bottom: var(--space-sm);
+    font-size: var(--font-size-base);
 }
 
 .sidebar .filtros label {
-    margin-top: 0.5rem;
-    font-size: 0.85rem;
+    margin-top: var(--space-sm);
+    font-size: var(--font-size-xs);
 }
 
 .sidebar .filtros input[type="number"] {
     width: 100%;
     padding: 0.55rem 0.7rem;
-    border: 1px solid #cdbb9f;
-    border-radius: 6px;
-    font-size: 0.9rem;
+    border: 1px solid var(--gray-400);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-sm);
     font-family: inherit;
-    background-color: #faf4ec;
+    background-color: var(--light);
     transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .sidebar .filtros input[type="number"]:focus {
     outline: none;
-    border-color: #c26d3d;
-    background-color: #ffffff;
-    box-shadow: 0 0 0 3px rgba(194, 109, 61, 0.15);
+    border-color: var(--brand-accent);
+    background-color: var(--white);
+    box-shadow: 0 0 0 3px rgba(163, 87, 47, 0.15);
 }
 
 .sidebar .filtros .check-envio {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--space-sm);
     margin-top: 0.25rem;
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: var(--font-size-sm);
 }
 
 .sidebar .filtros input[type="checkbox"] {
     width: 1rem;
     height: 1rem;
-    accent-color: #c26d3d;
+    accent-color: var(--brand-accent);
     cursor: pointer;
 }
 
 .sidebar .filtros button[type="submit"] {
     width: 100%;
-    background-color: #6f4e2f;
-    color: #ffffff;
+    background-color: var(--brand-primary);
+    color: var(--white);
     border: none;
     padding: 0.6rem 1rem;
-    border-radius: 6px;
-    font-size: 0.9rem;
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-sm);
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
 
 .sidebar .filtros button[type="submit"]:hover {
-    background-color: #c26d3d;
+    background-color: var(--brand-accent);
 }
 
 /* ===== Filtros colapsables solo HTML + CSS (checkbox hack) ===== */
@@ -380,7 +463,7 @@ aside nav a:hover {
     pointer-events: none;
 }
 
-/* En desktop el botón de filtros no se muestra y el contenido va abierto */
+/* En desktop el boton de filtros no se muestra y el contenido va abierto */
 .filtros-boton {
     display: none;
 }
@@ -395,62 +478,56 @@ aside nav a:hover {
     transition: transform 0.2s ease;
 }
 
-/* ===== Catálogo (contenedor Grid del layout, tarjetas en Flex) ===== */
+/* ===== Catalogo (Clase 1: grid responsive 1/2/3 columnas) =====
+   Base / mobile: 1 columna. Tablet (>=600px): 2. Desktop (>=1024px): 3. */
 #catalogo {
     grid-area: catalogo;
     min-width: 0;
 }
 
-#catalogo h2 {
-    font-size: 1.3rem;
-    color: #6f4e2f;
-    margin-bottom: 1.5rem;
-}
-
 #catalogo > h2 {
-    margin-bottom: 1.5rem;
+    font-size: var(--font-size-h2);
+    color: var(--brand-primary);
+    margin-bottom: var(--space-lg);
+    margin-top: 0;
 }
 
-/* Contenedor flex de las tarjetas */
 #catalogo .productos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--catalog-gap);
     align-items: stretch;
 }
 
-/* ===== Tarjetas de productos (Flex items) ===== */
-/* Mobile primero: 1 columna */
+/* ===== Tarjetas de productos (grid items) ===== */
 #catalogo article,
 #catalogo .card {
-    flex: 1 1 100%;
-    max-width: 100%;
-    background-color: #ffffff;
-    border: 1px solid #e7d9c4;
-    border-radius: 8px;
-    padding: 1.5rem;
+    background-color: var(--white);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--border-radius-lg);
+    padding: var(--card-padding);
     transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 #catalogo article:hover,
 #catalogo .card:hover {
-    box-shadow: 0 4px 12px rgba(194, 109, 61, 0.12);
+    box-shadow: 0 4px 12px rgba(163, 87, 47, 0.12);
     border-color: #e8cfb4;
 }
 
 #catalogo article h3 a {
-    color: #6f4e2f;
-    font-size: 1.15rem;
+    color: var(--brand-primary);
+    font-size: var(--font-size-h3);
 }
 
 #catalogo article h3 a:hover {
-    color: #c26d3d;
+    color: var(--brand-accent);
 }
 
 #catalogo article p {
-    margin-bottom: 0.35rem;
-    color: #6b5542;
-    font-size: 0.95rem;
+    margin-bottom: var(--space-xs);
+    color: var(--gray-500);
+    font-size: var(--font-size-base);
 }
 
 #catalogo article p:last-child {
@@ -464,9 +541,9 @@ article[aria-label="Ficha del producto"] img {
     height: auto;
     aspect-ratio: 4 / 3;
     object-fit: cover;
-    border-radius: 6px;
-    margin-bottom: 1rem;
-    background-color: #efe3d2;
+    border-radius: var(--border-radius-sm);
+    margin-bottom: var(--space-md);
+    background-color: var(--gray-200);
     display: block;
 }
 
@@ -474,30 +551,54 @@ article[aria-label="Ficha del producto"] img {
     max-width: 480px;
 }
 
-/* Tablet: 3 columnas */
+/* Tablet: 2 columnas */
 @media (min-width: 600px) and (max-width: 1023px) {
-    #catalogo article,
-    #catalogo .card {
-        flex: 1 1 calc(33.333% - 1.25rem);
-        max-width: calc(33.333% - 0.85rem);
+    #catalogo .productos {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Desktop: 4 columnas + sidebar lateral vía Grid */
+/* Desktop: 3 columnas + sidebar lateral de filtros via Grid */
 @media (min-width: 1024px) {
+    /* Barra superior unificada: logo a la izquierda (header), links centrados
+       y boton a la derecha (navbar), en la misma fila del grid. */
+    body {
+        grid-template-areas:
+            "header navbar"
+            "searchbar searchbar"
+            "main main"
+            "footer footer";
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto 1fr auto;
+    }
+
+    .site-header {
+        min-height: var(--header-height);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .navbar {
+        min-height: var(--header-height);
+        background-color: var(--brand-primary);
+        position: sticky;
+        top: 0;
+        z-index: 950;
+        border-left: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
     #inicio {
         grid-template-areas: "sidebar catalogo";
-        grid-template-columns: 220px 1fr;
+        grid-template-columns: var(--sidebar-width) 1fr;
     }
 
-    #catalogo article,
-    #catalogo .card {
-        flex: 1 1 calc(25% - 1.25rem);
-        max-width: calc(25% - 0.95rem);
+    #catalogo .productos {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
-/* Tablet: sidebar arriba, catálogo debajo (Grid de 1 columna) */
+/* Tablet: sidebar arriba, catalogo debajo (Grid de 1 columna) */
 @media (min-width: 600px) and (max-width: 1023px) {
     #inicio {
         grid-template-areas:
@@ -507,66 +608,67 @@ article[aria-label="Ficha del producto"] img {
     }
 }
 
-/* ===== Footer ===== */
+/* ===== Footer (Clase 1: estilo propio) ===== */
 footer {
-    background-color: #6f4e2f;
-    color: #ffffff;
-    padding: 1.5rem 2rem;
+    grid-area: footer;
+    background-color: var(--brand-primary);
+    color: var(--white);
+    padding: var(--space-lg) var(--space-xl);
     text-align: center;
     margin-top: auto;
 }
 
 footer p {
     margin-bottom: 0.75rem;
-    font-size: 0.9rem;
-    color: #cdbb9f;
+    font-size: var(--font-size-sm);
+    color: var(--light-hover);
 }
 
 footer nav ul {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
+    gap: var(--space-lg);
 }
 
 footer nav a {
-    color: #f0d9bd;
-    font-size: 0.9rem;
+    color: var(--light-hover);
+    font-size: var(--font-size-sm);
     font-weight: 500;
 }
 
 footer nav a:hover {
-    color: #ffffff;
+    color: var(--white);
 }
 
 /* ===== Tablas ===== */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 1rem 0 1.5rem;
-    background-color: #ffffff;
-    border-radius: 8px;
+    margin: var(--space-md) 0 var(--space-lg);
+    background-color: var(--white);
+    border-radius: var(--border-radius-lg);
     overflow: hidden;
-    border: 1px solid #e7d9c4;
+    border: 1px solid var(--gray-300);
 }
 
 caption {
     text-align: left;
     font-weight: 600;
-    color: #6f4e2f;
+    color: var(--brand-primary);
     padding: 0.75rem 1rem;
-    font-size: 1rem;
+    font-size: var(--font-size-base);
 }
 
 th, td {
     padding: 0.75rem 1rem;
     text-align: left;
-    border-bottom: 1px solid #efe3d2;
-    font-size: 0.9rem;
+    border-bottom: 1px solid var(--gray-200);
+    font-size: var(--font-size-sm);
 }
 
 thead th {
-    background-color: #f6ecdf;
-    color: #6f4e2f;
+    background-color: var(--light);
+    color: var(--brand-primary);
     font-weight: 600;
 }
 
@@ -576,8 +678,8 @@ tbody tr:last-child td {
 
 tfoot td {
     font-weight: 700;
-    background-color: #faf4ec;
-    color: #6f4e2f;
+    background-color: var(--light);
+    color: var(--brand-primary);
 }
 
 /* ===== Formularios ===== */
@@ -586,25 +688,25 @@ form {
 }
 
 fieldset {
-    border: 1px solid #e7d9c4;
-    border-radius: 8px;
-    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--border-radius-lg);
+    padding: 1.25rem var(--space-lg);
     margin-bottom: 1.25rem;
-    background-color: #ffffff;
+    background-color: var(--white);
 }
 
 legend {
     font-weight: 600;
-    color: #6f4e2f;
-    padding: 0 0.5rem;
+    color: var(--brand-primary);
+    padding: 0 var(--space-sm);
 }
 
 label {
     display: block;
     margin-top: 0.75rem;
     margin-bottom: 0.25rem;
-    font-size: 0.9rem;
-    color: #4a3b2f;
+    font-size: var(--font-size-sm);
+    color: var(--dark);
 }
 
 input[type="text"],
@@ -613,145 +715,168 @@ input[type="tel"],
 textarea {
     width: 100%;
     padding: 0.6rem 0.75rem;
-    border: 1px solid #cdbb9f;
-    border-radius: 6px;
-    font-size: 0.95rem;
+    border: 1px solid var(--gray-400);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-base);
     font-family: inherit;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    background-color: #ffffff;
+    background-color: var(--white);
 }
 
 input:focus, textarea:focus {
     outline: none;
-    border-color: #c26d3d;
-    box-shadow: 0 0 0 3px rgba(194, 109, 61, 0.15);
+    border-color: var(--brand-accent);
+    box-shadow: 0 0 0 3px rgba(163, 87, 47, 0.15);
 }
 
 input[type="radio"] {
     margin-right: 0.4rem;
 }
 
-
-
 input[type="submit"] {
-    background-color: #c26d3d;
-    color: #ffffff;
+    background-color: var(--brand-accent);
+    color: var(--white);
     border: none;
-    padding: 0.7rem 1.5rem;
-    border-radius: 6px;
-    font-size: 1rem;
+    padding: 0.7rem var(--space-lg);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-base);
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.2s ease;
-    margin-top: 0.5rem;
+    margin-top: var(--space-sm);
 }
 
 input[type="submit"]:hover {
-    background-color: #a3572f;
+    background-color: var(--brand-accent-hover);
 }
 
 [role="button"] {
     display: inline-block;
-    background-color: #c26d3d;
-    color: #ffffff;
+    background-color: var(--brand-accent);
+    color: var(--white);
     padding: 0.6rem 1.25rem;
-    border-radius: 6px;
+    border-radius: var(--border-radius-sm);
     font-weight: 600;
     transition: background-color 0.2s ease;
 }
 
 [role="button"]:hover {
-    background-color: #a3572f;
-    color: #ffffff;
+    background-color: var(--brand-accent-hover);
+    color: var(--white);
 }
 
-/* ===== Artículo producto ===== */
+/* ===== Articulo producto ===== */
 article[aria-label="Ficha del producto"] {
-    background-color: #ffffff;
-    border: 1px solid #e7d9c4;
-    border-radius: 8px;
-    padding: 2rem;
+    background-color: var(--white);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-xl);
 }
 
 article[aria-label="Ficha del producto"] h2 {
-    color: #6f4e2f;
+    color: var(--brand-primary);
     margin-bottom: 0.75rem;
 }
 
 article[aria-label="Ficha del producto"] section {
-    margin-top: 1.5rem;
+    margin-top: var(--space-lg);
 }
 
 article[aria-label="Ficha del producto"] h3 {
-    color: #6f4e2f;
-    margin-bottom: 0.5rem;
+    color: var(--brand-primary);
+    margin-bottom: var(--space-sm);
 }
 
 /* ===== Secciones generales ===== */
 section[aria-label] {
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-xl);
 }
 
 h2 {
-    font-size: 1.3rem;
-    color: #6f4e2f;
+    font-size: var(--font-size-h2);
+    color: var(--brand-primary);
 }
 
 h3 {
-    font-size: 1.1rem;
+    font-size: var(--font-size-h3);
 }
 
-/* ===== Responsive ===== */
+/* ===== Responsive (UX/UI mobile y tablet) ===== */
 @media (max-width: 768px) {
-    .site-header,
-    header {
+    .site-header {
         flex-direction: row;
         align-items: center;
-        padding: 0 1rem;
-        min-height: var(--header-h);
+        padding: 0 var(--space-md);
+        min-height: var(--header-height);
     }
 
-    /* --- Menú hamburguesa: solo mobile --- */
+    /* --- Menu hamburguesa: solo mobile --- */
     .hamburger {
         display: flex;
     }
 
+    /* --- Navbar como sidebar drawer ocultable (checkbox hack) ---
+       En mobile el <nav> deja la barra y flota como drawer lateral.
+       Con #menu-toggle activo se desliza a la vista; sino queda escondido. */
     .navbar {
-        padding: 0 1rem;
-    }
-
-    /* Nav colapsada por defecto, se abre con el checkbox */
-    nav[aria-label="Navegación principal"] ul {
-        display: none;
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        bottom: 0;
+        width: min(280px, 82vw);
         flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
         gap: 0;
-        padding: 0.5rem 0;
+        padding: var(--space-md);
+        background-color: var(--brand-secondary);
+        transform: translateX(-105%);
+        transition: transform 0.28s ease;
+        z-index: 950;
+        overflow-y: auto;
     }
 
-    nav[aria-label="Navegación principal"] li {
+    #menu-toggle:checked ~ .navbar {
+        transform: translateX(0);
+        box-shadow: 4px 0 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .navbar .nav-links {
+        flex: 0 0 auto;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: var(--space-sm);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        padding-bottom: var(--space-md);
+    }
+
+    .navbar .nav-links li {
         border-top: 1px solid rgba(255, 255, 255, 0.12);
     }
 
-    nav[aria-label="Navegación principal"] li:first-child {
+    .navbar .nav-links li:first-child {
         border-top: none;
     }
 
-    nav[aria-label="Navegación principal"] a {
+    .navbar .nav-links a {
         display: block;
         padding: 0.7rem 0.25rem;
         border-bottom: none;
     }
 
-    nav[aria-label="Navegación principal"] a:hover {
+    .navbar .nav-links a:hover {
         border-bottom-color: transparent;
     }
 
-    /* Mostrar nav cuando el checkbox está marcado */
-    #menu-toggle:checked ~ .navbar ul {
-        display: flex;
+    /* Boton dentro del drawer, al pie */
+    .navbar .nav-boton {
+        margin-top: var(--space-md);
+        margin-left: 0;
+        display: block;
+        text-align: center;
     }
 
-    /* Hamburguesa animada a "X" cuando el menú está abierto */
+    /* Hamburguesa animada a "X" cuando el menu esta abierto */
     #menu-toggle:checked ~ .site-header .hamburger span:nth-child(1) {
         transform: translateY(8px) rotate(45deg);
     }
@@ -770,18 +895,18 @@ h3 {
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        background-color: #6f4e2f;
-        color: #ffffff;
+        background-color: var(--brand-primary);
+        color: var(--white);
         font-weight: 600;
-        font-size: 0.95rem;
-        padding: 0.7rem 1rem;
-        border-radius: 6px;
+        font-size: var(--font-size-base);
+        padding: 0.7rem var(--space-md);
+        border-radius: var(--border-radius-sm);
         cursor: pointer;
     }
 
     .filtros-contenido {
         display: none;
-        margin-top: 1rem;
+        margin-top: var(--space-md);
     }
 
     #filtros-toggle:checked ~ .filtros-contenido {
@@ -793,7 +918,7 @@ h3 {
     }
 
     .search-bar {
-        padding: 0.75rem 1rem;
+        padding: 0.75rem var(--space-md);
     }
 
     .search-bar form[role="search"] {
@@ -812,24 +937,21 @@ h3 {
     }
 
     main {
-        padding: 1rem;
-    }
-
-    nav[aria-label="Ruta de navegación"] ol {
-        font-size: 0.8rem;
+        padding: var(--space-md);
     }
 
     footer nav ul {
         flex-wrap: wrap;
-        gap: 1rem;
+        gap: var(--space-md);
     }
 
     table {
-        font-size: 0.85rem;
+        font-size: var(--font-size-xs);
     }
 
     th, td {
         padding: 0.5rem 0.6rem;
+        font-size: var(--font-size-xs);
     }
 }
 
@@ -838,16 +960,12 @@ h3 {
         font-size: 14px;
     }
 
-    header h1 {
+    .site-header h1 {
         font-size: 1.25rem;
     }
 
-    nav[aria-label="Navegación principal"] ul {
-        gap: 0.75rem;
-    }
-
-    nav[aria-label="Navegación principal"] a {
-        font-size: 0.85rem;
+    .navbar .nav-links {
+        gap: var(--space-xs);
     }
 
     aside nav ul {
@@ -855,15 +973,15 @@ h3 {
     }
 
     footer {
-        padding: 1rem;
+        padding: var(--space-md);
     }
 
     footer p {
-        font-size: 0.8rem;
+        font-size: var(--font-size-xs);
     }
 
     footer nav ul {
         flex-direction: column;
-        gap: 0.5rem;
+        gap: var(--space-sm);
     }
 }
