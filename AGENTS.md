@@ -8,6 +8,9 @@ npm, sin build/test/lint. El `package.json`/`node_modules` existen solo bajo `.o
 browser con `python3 -m http.server 8000`. Entregas: rama propia + PR a `main` (no directo
 sobre `main`, ver `README.MD`).
 
+**Git: sin acciones automaticas.** El agente no hace `commit`, `push` ni crea PRs por su
+cuenta: solo cuando el usuario lo pide explicitamente en el mensaje.
+
 ## Flujo spec-driven
 
 Este repositorio usa una carpeta unica de trabajo IA: `spec-ia-agentic-engineer/`.
