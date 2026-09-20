@@ -1,80 +1,60 @@
-# Cómo usar el repositorio template
+# La Casa de los Hilos
 
-Guía paso a paso para arrancar las prácticas de la materia.
+E-commerce estático de artículos textiles (hilos, lanas, telas, kits de tejido),
+desarrollado como práctica académica de la materia Aplicaciones Web Cliente (ISTEA).
 
-Este repositorio es un **template**: cada alumno crea su propia copia independiente, no un fork. Tu copia no tiene ninguna relación con el repo del profesor, así que no hay riesgo de mandar cambios a otro lado por error.
+## Arquitectura
 
-## 0. Requisitos previos
+Sitio web de cliente: **HTML + CSS + JS** puros, servido tal cual desde el repo
+(GitHub Pages / servidor estático). **Supabase** como backend-as-a-service
+planificado (tablas, auth, storage) que se integrará en iteraciones posteriores.
 
-- Tener una cuenta de GitHub.
-- Tener Git instalado (`git --version` en la terminal para verificar).
-- Tener un editor de código (por ejemplo VS Code).
+- **Sin build step, sin bundler, sin dependencias npm**: el HTML/CSS/JS se sirve
+  tal cual. El cliente de Supabase (si se usa) se cargará vía CDN (import ESM).
+- **Sin framework del lado del cliente**: JS vanilla en `js/`.
+- **Estructura de datos**: se define en un change/tabla de Supabase aparte; por
+  ahora el catálogo es estático en el HTML.
 
-## 1. Crear tu propio repositorio a partir del template
+## Estructura de archivos
 
-1. Entrá al repositorio del profesor en GitHub: https://github.com/mef760/proyecto-aplicaciones-web-cliente-2c-2026
-2. Hacé clic en el botón verde **"Use this template"** → **"Create a new repository"** (arriba a la derecha, al lado de "Code").
-3. Elegí tu cuenta como dueño, poné un nombre al repo (por ejemplo `app-web-cliente-tunombre`) y marcalo como **público** (el profesor necesita poder verlo sin permisos especiales).
-4. Hacé clic en **Create repository**.
-
-Esto te crea un repositorio 100% tuyo: `github.com/TU-USUARIO/nombre-repo`. No es un fork, no tiene conexión con el original, y vos sos el único dueño.
-
-## 2. Clonar tu repositorio
-
-```bash
-git clone https://github.com/TU-USUARIO/nombre-repo.git
-cd nombre-repo
+```
+AplicacionesWebCliente-ISTEA/
+├── index.html        # landing + catálogo de artículos textiles (header, filtros, catálogo, footer)
+├── producto.html     # detalle de un artículo textil con especificaciones
+├── carrito.html      # carrito de compras + formulario para finalizar la compra
+├── contacto.html     # formulario de contacto + información de la tienda
+├── nosotros.html     # sección "quiénes somos"
+├── style.css         # estilos de todo el sitio (header, nav, footer, catálogo, responsive)
+├── js/
+│   └── main.js       # script base (placeholder; sin lógica de negocio todavía)
+├── img/              # imágenes (ej. placeholder.svg; logo real pendiente)
+├── favicon.ico
+├── Predictions.md    # lista de prácticas del curso (backlog)
+├── README.MD
+└── spec-ia-agentic-engineer/   # flujo spec-driven (docs IA, ver AGENTS.md)
 ```
 
-## 3. Crear una rama para tu trabajo
+## Layout común
 
-Aunque el repo es tuyo, conviene practicar el flujo de ramas + PR. Usá un nombre de rama descriptivo (por ejemplo `practica1`, `tp2-formulario`, etc.):
+Todas las páginas comparten:
 
-```bash
-git checkout -b practica1
-```
+- **Header** con branding "La Casa de los Hilos".
+- **Navbar** (Inicio, Catálogo, Nosotros, Carrito, Contacto), colapsable en
+  mobile con menú hamburguesa (solo HTML/CSS).
+- **Footer** con copyright y redes sociales.
+- **Responsive**: desktop (catálogo en 4 columnas con sidebar de filtros),
+  tablet (3 columnas) y mobile (1 columna, nav colapsada).
 
-> Nunca trabajes directo sobre `main`: siempre creá una rama antes de tocar archivos.
-
-## 4. Hacer tus cambios
-
-Editá los archivos según la consigna. Después:
-
-```bash
-git add .
-git commit -m "Descripción breve de lo que hiciste"
-git push origin practica1
-```
-
-## 5. Abrir el Pull Request (dentro de tu propio repo)
-
-1. Andá a tu repositorio en GitHub.
-2. Vas a ver un botón que dice **"Compare & pull request"** — hacé clic ahí.
-3. Verificá que tanto la rama base como la de comparación pertenezcan a **TU** repositorio:
-   - base: `main`
-   - compare: `practica1`
-4. Completá la plantilla que aparece automáticamente (ver [`.github/pull_request_template.md`](.github/pull_request_template.md) para el detalle de qué información pide).
-5. Hacé clic en **Create pull request** y después en **Merge pull request** para integrarlo a tu `main`.
-
-Todo este proceso queda dentro de tu propio repositorio. El profesor accede a tu repo (por el link que le compartas) para revisar el código y el PR, pero nunca recibe un PR en su repositorio.
-
-## 6. Repetir el flujo para cada práctica
-
-Para cada nueva práctica o entrega, repetí los pasos 3 a 5 con una rama nueva (por ejemplo `practica2`, `practica3`, ...), partiendo siempre de `main` actualizado:
+## Cómo correrlo
 
 ```bash
-git checkout main
-git pull origin main
-git checkout -b practica2
+python3 -m http.server 8000
 ```
 
-## 7. Compartir el repositorio con el profesor
+Abrir `http://localhost:8000/index.html` en el browser (desktop y mobile).
+No hay install/test/build/lint: la validación es manual en browser.
 
-Copiá el link de tu repositorio (`https://github.com/TU-USUARIO/nombre-repo`) y entregalo como indique el profesor (formulario, mail, etc.).
+## Flujo de entregas
 
-## Errores comunes
-
-- **Buscar el botón "Fork" en vez de "Use this template"**: son cosas distintas. Fork crea una copia conectada al original; template crea una copia independiente. Usá siempre "Use this template".
-- **Trabajar directo sobre `main`**: creá una rama antes de tocar archivos, para practicar el flujo de PR.
-- **Dejar el repositorio como privado**: si el repo no es público, el profesor puede no tener acceso para revisarlo. Verificá los ajustes en Settings → General → Danger Zone si necesitás cambiar la visibilidad.
-- **No hacer push de la rama antes de abrir el PR**: si `git push origin practica1` falla, revisá que la rama exista localmente (`git branch`) y que el remoto esté bien configurado (`git remote -v`).
+Cada práctica se trabaja en una rama y se integra por **PR contra `main`**
+(ver el resto de este README).
