@@ -30,9 +30,9 @@ las cards del catalogo:
     mobile mantiene `position: fixed` y su z-index (950) para quedar por encima
     de la searchbar (900). Se documenta decision en "Riesgos".
   - `:root`: dos tokens nuevos de badge con contraste blanco >= 7:1:
-    - `--badge-nuevo: #0f5132` (verde oscuro; blanco ~9.4:1).
-    - `--badge-oferta: #8a2f1f` (terracota oscuro; blanco ~8.4:1).
-  - Clases `.badge`, `.badge--nuevo`, `.badge--oferta` (pill absoluto sobre la
+    - `--badge-new: #0f5132` (verde oscuro; blanco ~9.4:1).
+    - `--badge-sale: #8a2f1f` (terracota oscuro; blanco ~8.4:1).
+  - Clases `.badge`, `.badge--new`, `.badge--sale` (pill absoluto sobre la
     imagen de la card).
   - Cards: `transition` extendida a `transform`; hover `translateY(-4px)` +
     `scale(1.02)` + sombra aumentada.
@@ -45,8 +45,8 @@ las cards del catalogo:
     (`content: "→"`) deslizándose (translateX) en hover/focus. El link pasa a ser
     un **CTA visible** (botón terracota con texto blanco, contraste AAA) para que
     la acción se distinga a simple vista.
-- `index.html`: badges estaticos `<span class="badge badge--nuevo">Nuevo</span>`
-  y `badge--oferta` en las cards (2 nuevas + 2 ofertas); se elimina el `&rarr;`
+- `index.html`: badges estaticos `<span class="badge badge--new">Nuevo</span>`
+  y `badge--sale` en las cards (2 nuevos + 2 ofertas); se elimina el `&rarr;`
   literal de los 6 links "Ver detalle" (lo genera ::after).
 
 ## Que no cambia
@@ -85,9 +85,9 @@ las cards del catalogo:
 - **WHEN** se inspecciona el catalogo **THEN** el "Ver detalle" destaca como boton
   (fondo terracota, texto blanco) y no pasa desapercibido.
 - **WHEN** se inspecciona el HTML **THEN** hay cards con badge "Nuevo" y otras
-  con "Oferta" (span.badge), y en `:root` existen `--badge-nuevo`/`--badge-oferta`.
-- **WHEN** se mide contraste **THEN** texto blanco sobre `--badge-nuevo` y
-  `--badge-oferta` da >= 7:1 (AAA).
+  con "Oferta" (span.badge), y en `:root` existen `--badge-new`/`--badge-sale`.
+- **WHEN** se mide contraste **THEN** texto blanco sobre `--badge-new` y
+  `--badge-sale` da >= 7:1 (AAA).
 - **WHEN** el sistema pide `prefers-reduced-motion: reduce` **THEN** las
   animaciones de entrada y el hover de movimiento se desactivan.
 - **WHEN** se usa el pseudo-elemento elegido **THEN** el/los elementos indicados

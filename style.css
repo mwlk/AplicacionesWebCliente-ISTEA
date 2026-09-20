@@ -40,8 +40,8 @@
     --light-hover: #fffdfa;          /* Casi blanco: hover de links claros e texto en footer (AAA sobre marrones) */
 
     /* --- Badges de estado (texto blanco con contraste WCAG AAA >= 7:1) --- */
-    --badge-nuevo: #0f5132;          /* Verde oscuro: estado "Nuevo" (blanco ~9.4:1) */
-    --badge-oferta: #8a2f1f;         /* Terracota oscuro: estado "Oferta" (blanco ~8.4:1) */
+    --badge-new: #0f5132;          /* Verde oscuro: texto "Nuevo" (blanco ~9.4:1) */
+    --badge-sale: #8a2f1f;         /* Terracota oscuro: texto "Oferta" (blanco ~8.4:1) */
 
     /* --- Typography --- */
     --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -523,9 +523,9 @@ aside nav a:hover {
     border-color: #e8cfb4;
 }
 
-/* ===== Badges de estado (Nuevo / Oferta) =====
+/* ===== Badges de estado (texto: Nuevo / Oferta) =====
    Sin backend por ahora: el estado es estatico en el HTML (span.badge).
-   Colores en :root (--badge-nuevo / --badge-oferta), blanco con contraste AAA >= 7:1. */
+   Colores en :root (--badge-new / --badge-sale), blanco con contraste AAA >= 7:1. */
 .badge {
     position: absolute;
     top: var(--space-sm);
@@ -542,12 +542,12 @@ aside nav a:hover {
     letter-spacing: 0.05em;
 }
 
-.badge--nuevo {
-    background-color: var(--badge-nuevo);
+.badge--new {
+    background-color: var(--badge-new);
 }
 
-.badge--oferta {
-    background-color: var(--badge-oferta);
+.badge--sale {
+    background-color: var(--badge-sale);
 }
 
 /* ===== Link "Ver detalle" como CTA visible =====
