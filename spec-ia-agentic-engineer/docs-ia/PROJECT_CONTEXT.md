@@ -1,20 +1,24 @@
 # Contexto del proyecto: AplicacionesWebCliente-ISTEA
 
-> Archivo completado por /sdd-setup. Refleja la arquitectura real del proyecto (2026-09-19).
+> Archivo completado por /sdd-setup y actualizado por el change `la-casa-de-los-hilos` (2026-09-19).
 
 ## Qué es
 
-Sitio web estático de e-commerce desarrollado como práctica académica de la
-materia Aplicaciones Web Cliente (ISTEA). Es un template de repositorio para
-cada alumno: páginas HTML/CSS puras (sin framework), con layout típico de
-tienda online: home con catálogo, detalle de producto, carrito y contacto.
-No hay backend ni base de datos — todo es cliente.
+E-commerce estático de artículos textiles: **"La Casa de los Hilos"** (hilos,
+lanas, telas, kits de tejido y accesorios). Práctica académica de la materia
+Aplicaciones Web Cliente (ISTEA). Site de cliente con layout típico de tienda
+online: landing/catálogo, detalle de producto, carrito y contacto.
 
 ## Stack detectado
 
-- **HTML5** puro: `index.html` (home con encabezado, filtro de categorías, catálogo y footer), `producto.html` (detalle + especificaciones), `carrito.html`, `contacto.html`
-- **CSS** puro: `style.css` (estilos header, catálogo, nav, footer, responsive)
-- **Sin framework, sin build step, sin bundler, sin dependencias npm** — se sirve tal cual desde el repo (GitHub Pages / estático)
+- **HTML5** puro: `index.html` (landing + catálogo con filtros), `producto.html`
+  (detalle + especificaciones), `carrito.html`, `contacto.html`, `nosotros.html`
+- **CSS** puro: `style.css` (header, navbar, catálogo, footer, responsive)
+- **JS** vanilla: `js/main.js` (base/placeholder, sin lógica de negocio todavía)
+- **Supabase** (planificado, no conectado aún): backend-as-a-service para
+  catálogo/origen de datos en iteraciones futuras
+- Sin framework, sin build step, sin bundler, sin dependencias npm — se sirve tal
+  cual desde el repo (GitHub Pages / estático)
 - `img/` y `favicon.ico`: recursos estáticos
 - `Predictions.md`: lista de prácticas pendientes/realizadas del curso
 
@@ -22,12 +26,14 @@ No hay backend ni base de datos — todo es cliente.
 
 ```
 AplicacionesWebCliente-ISTEA/
-├── index.html        # home: header + filtro categorias + catalogo + footer
-├── producto.html     # detalle de producto con especificaciones
-├── carrito.html      # pantalla de carrito
+├── index.html        # landing: header + filtro categorias + catalogo + footer
+├── producto.html     # detalle de articulo textil con especificaciones
+├── carrito.html      # pantalla de carrito + formulario de compra
 ├── contacto.html     # pantalla de contacto
+├── nosotros.html     # seccion "quiénes somos"
 ├── style.css         # estilos de todo el sitio
-├── img/              # imágenes (ej. logo.png)
+├── js/main.js        # script base (placeholder)
+├── img/              # imágenes (ej. placeholder.svg; logo real pendiente)
 ├── favicon.ico
 ├── Predictions.md    # lista de prácticas del curso
 └── .github/          # pull_request_template
@@ -40,11 +46,14 @@ AplicacionesWebCliente-ISTEA/
 
 ## Persistencia
 
-- Ninguna. Sitio 100% estático/cliente. Sin backend, sin base de datos, sin localStorage obligatorio.
+- Cliente: ninguna (catálogo estático en el HTML).
+- Planificado: Supabase (tablas de productos/contacto/carrito, auth, storage) en
+  un change futuro. No conectado todavía.
 
 ## Integraciones externas
 
-- Ninguna de terceros. GitHub Actions: solo forma del repo template (flujo PR para entregas).
+- Supabase: planificado (sin integración actual). GitHub Actions: solo forma del
+  repo template (flujo PR para entregas).
 
 ## Convenciones de errores
 
@@ -63,7 +72,7 @@ AplicacionesWebCliente-ISTEA/
 
 ## Reglas del proyecto
 
-- No introducir framework, build step ni dependencias npm a menos que se pida explícitamente — es HTML/CSS puro.
+- No introducir framework, build step ni dependencias npm a menos que se pida explícitamente — es HTML/CSS/JS puro.
 - Mantener el diseño y clases de `style.css` existentes; no romper el layout actual.
 - Cada entrega se trabaja en una rama y se integra por PR contra `main` (flujo de la materia, ver `README.MD`).
 - `Predictions.md` lista las prácticas; usarla como backlog de features si corresponde.

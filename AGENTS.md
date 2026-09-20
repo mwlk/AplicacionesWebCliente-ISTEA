@@ -1,19 +1,27 @@
 # AGENTS
 
-Este repositorio usa una carpeta unica de trabajo IA:
+## Proyecto
 
-`spec-ia-agentic-engineer/`
+Sitio estatico de e-commerce (practica academica ISTEA): HTML + CSS puro, sin JS, sin
+npm, sin build/test/lint. El `package.json`/`node_modules` existen solo bajo `.opencode/`
+(config del plugin de opencode), no son del proyecto. No hay suite de tests: verificar en
+browser con `python3 -m http.server 8000`. Entregas: rama propia + PR a `main` (no directo
+sobre `main`, ver `README.MD`).
+
+## Flujo spec-driven
+
+Este repositorio usa una carpeta unica de trabajo IA: `spec-ia-agentic-engineer/`.
 
 Antes de modificar codigo, leer:
 
-1. `README.md` del proyecto si existe.
+1. `README.MD` del proyecto (nota: extension en mayusculas).
 2. `spec-ia-agentic-engineer/README.md`.
 3. `spec-ia-agentic-engineer/AGENTS.md`.
 4. `spec-ia-agentic-engineer/docs-ia/README.md`.
 5. `spec-ia-agentic-engineer/docs-ia/AI_USAGE.md`.
 6. `spec-ia-agentic-engineer/docs-ia/PROJECT_CONTEXT.md`.
 7. `spec-ia-agentic-engineer/docs-ia/openspec/config.yaml`.
-8. El change activo en `spec-ia-agentic-engineer/docs-ia/openspec/changes/<change-name>/`.
+8. El change activo (si existe) en `spec-ia-agentic-engineer/docs-ia/openspec/changes/<change-name>/`.
 
 Reglas:
 

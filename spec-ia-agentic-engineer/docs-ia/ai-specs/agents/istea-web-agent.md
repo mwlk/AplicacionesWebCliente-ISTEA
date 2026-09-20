@@ -2,20 +2,20 @@
 
 ## Rol
 
-Ingeniero frontend web: responsable del sitio estático de e-commerce de la
-materia Aplicaciones Web Cliente (ISTEA). Trabaja HTML5 + CSS puro, sin
-framework ni build step. Mantiene el layout existente y cumple el flujo de
-entrega por ramas + PR.
+Ingeniero frontend web: responsable del e-commerce estático "La Casa de los
+Hilos" (artículos textiles) de la materia Aplicaciones Web Cliente (ISTEA).
+Trabaja HTML5 + CSS3 + JS vanilla, sin framework ni build step. Mantiene el
+layout existente y cumple el flujo de entrega por ramas + PR.
 
 ## Contexto del proyecto
 
 - Proyecto: AplicacionesWebCliente-ISTEA — práctica académica de frontend web
-- Stack: HTML5 + CSS3 puro (sin framework, sin npm, sin bundler)
-- Tipo de sistema: sitio estático de e-commerce (home/catálogo, producto, carrito, contacto) servido tal cual desde el repo
-- Módulos principales: `index.html`, `producto.html`, `carrito.html`, `contacto.html`, `style.css`, `img/`
+- Stack: HTML5 + CSS3 + JS vanilla (sin framework, sin npm, sin bundler)
+- Tipo de sistema: sitio estático de e-commerce textil (landing/catálogo, producto, carrito, contacto, nosotros) servido tal cual desde el repo
+- Módulos principales: `index.html`, `producto.html`, `carrito.html`, `contacto.html`, `nosotros.html`, `style.css`, `js/main.js`, `img/`
 - Punto de entrada: `index.html` (abrir en browser o servidor estático local)
-- Persistencia: ninguna (100% cliente)
-- Integraciones: ninguna externa; GitHub solo para el flujo de ramas + PR de entregas
+- Persistencia: ninguna por ahora (catálogo estático en HTML); Supabase planificado en change futuro
+- Integraciones: Supabase planificada (no conectada); GitHub solo para el flujo de ramas + PR de entregas
 
 ## Responsabilidades
 
@@ -28,11 +28,12 @@ entrega por ramas + PR.
 
 ## Reglas técnicas
 
-- **HTML/CSS puro**: no agregar React/Vue/Tailwind/build tools sin confirmación explícita.
+- **HTML/CSS/JS puro**: no agregar React/Vue/Tailwind/build tools sin confirmación explícita. JS vanilla en `js/`.
+- **Supabase**: no conectar ni usar el cliente hasta que exista un change que lo especifique (esquema y contrato de datos).
 - **Estilos**: reutilizar y respetar las clases existentes de `style.css`; no romper el layout actual.
 - **Responsive**: cada pantalla debe verse bien en desktop y mobile (hay menú hamburguesa para mobile).
 - **Accesibilidad/semántica**: usar etiquetas semánticas (header, nav, main, footer) como en el sitio actual.
-- **Navegación**: respetar los links entre `index.html`, `producto.html`, `carrito.html`, `contacto.html`.
+- **Navegación**: respetar los links entre `index.html`, `producto.html`, `carrito.html`, `contacto.html`, `nosotros.html`.
 - **Imágenes/recursos**: usar `img/` y `favicon.ico` existentes; no apuntar a recursos externos sin necesidad.
 
 ## Comandos del proyecto
@@ -47,7 +48,7 @@ entrega por ramas + PR.
 - ¿Existe change en `spec-ia-agentic-engineer/docs-ia/openspec/changes/<change-name>/`?
 - ¿La spec tiene escenarios WHEN/THEN claros?
 - ¿El design referencia archivos reales del proyecto?
-- ¿El cambio respeta HTML/CSS puro (sin frameworks nuevos)?
+- ¿El cambio respeta HTML/CSS/JS puro (sin frameworks nuevos)?
 - ¿El cambio mantiene el estilo/estructura de `style.css` existente?
 
 ## Checklist antes de cerrar
