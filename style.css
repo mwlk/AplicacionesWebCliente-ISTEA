@@ -39,6 +39,10 @@
 
     --light-hover: #fffdfa;          /* Casi blanco: hover de links claros e texto en footer (AAA sobre marrones) */
 
+    /* --- Badges de estado (texto blanco con contraste WCAG AAA >= 7:1) --- */
+    --badge-nuevo: #0f5132;          /* Verde oscuro: estado "Nuevo" (blanco ~9.4:1) */
+    --badge-oferta: #8a2f1f;         /* Terracota oscuro: estado "Oferta" (blanco ~8.4:1) */
+
     /* --- Typography --- */
     --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     --font-size-h1: 1.5rem;          /* Titulo del branding (header) */
@@ -157,6 +161,7 @@ ol {
     flex-wrap: nowrap;
     gap: var(--space-md);
     padding: 0 var(--space-md);
+    z-index: 100; /* Navbar sticky/fixed: siempre por encima del contenido al hacer scroll */
 }
 
 /* Links centrados en el espacio disponible */
@@ -502,17 +507,123 @@ aside nav a:hover {
 /* ===== Tarjetas de productos (grid items) ===== */
 #catalogo article,
 #catalogo .card {
+    position: relative; /* Ancla los badges absolutos (Nuevo / Oferta) */
     background-color: var(--white);
     border: 1px solid var(--gray-300);
     border-radius: var(--border-radius-lg);
     padding: var(--card-padding);
-    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
+/* Hover: la card levanta y crece suavemente sobre su sombra */
 #catalogo article:hover,
 #catalogo .card:hover {
-    box-shadow: 0 4px 12px rgba(163, 87, 47, 0.12);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(163, 87, 47, 0.16);
     border-color: #e8cfb4;
+}
+
+/* ===== Badges de estado (Nuevo / Oferta) =====
+   Sin backend por ahora: el estado es estatico en el HTML (span.badge).
+   Colores en :root (--badge-nuevo / --badge-oferta), blanco con contraste AAA >= 7:1. */
+.badge {
+    position: absolute;
+    top: var(--space-sm);
+    left: var(--space-sm);
+    z-index: 1;
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--border-radius-sm);
+    background-color: var(--gray-700);
+    color: var(--white);
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.badge--nuevo {
+    background-color: var(--badge-nuevo);
+}
+
+.badge--oferta {
+    background-color: var(--badge-oferta);
+}
+
+/* ===== Link "Ver detalle" como CTA visible =====
+   Boton con la flecha emitida por CSS (::after, pseudo-elemento): se distingue a
+   simple vista y en hover/focus el fondo se oscurece y la flecha se desliza.
+   Contraste AAA: blanco sobre --brand-accent (7.9:1) y --brand-accent-hover (9.2:1). */
+#catalogo article p:last-child a {
+    display: inline-block;
+    background-color: var(--brand-accent);
+    color: var(--white);
+    padding: 0.5rem 0.9rem;
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    line-height: 1.2;
+    transition: background-color 0.2s ease;
+}
+
+#catalogo article p:last-child a:hover,
+#catalogo article p:last-child a:focus-visible {
+    background-color: var(--brand-accent-hover);
+    color: var(--white);
+}
+
+#catalogo article p:last-child a::after {
+    content: "→";
+    display: inline-block;
+    margin-left: 0.4rem;
+    transition: transform 0.2s ease;
+}
+
+#catalogo article p:last-child a:hover::after,
+#catalogo article p:last-child a:focus-visible::after {
+    transform: translateX(4px);
+}
+
+/* ===== Animacion de entrada de las cards (fadeInUp escalonado) =====
+   fill-mode: backwards: durante el delay la card parte oculta y, al terminar,
+   vuelve al estilo natural para no pisar el transform del hover. */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+#catalogo .productos article {
+    animation: fadeInUp 0.5s ease backwards;
+}
+
+#catalogo .productos article:nth-child(1) { animation-delay: 0s; }
+#catalogo .productos article:nth-child(2) { animation-delay: 0.08s; }
+#catalogo .productos article:nth-child(3) { animation-delay: 0.16s; }
+#catalogo .productos article:nth-child(4) { animation-delay: 0.24s; }
+#catalogo .productos article:nth-child(5) { animation-delay: 0.32s; }
+#catalogo .productos article:nth-child(6) { animation-delay: 0.4s; }
+
+/* Accesibilidad: sin animaciones de movimiento si el sistema lo pide */
+@media (prefers-reduced-motion: reduce) {
+    #catalogo .productos article {
+        animation: none;
+    }
+
+    #catalogo article:hover,
+    #catalogo .card:hover {
+        transform: none;
+    }
+
+    #catalogo article p:last-child a,
+    #catalogo article p:last-child a::after {
+        transition: none;
+    }
 }
 
 #catalogo article h3 a {
@@ -584,7 +695,7 @@ article[aria-label="Ficha del producto"] img {
         background-color: var(--brand-primary);
         position: sticky;
         top: 0;
-        z-index: 950;
+        z-index: 100;
         border-left: 1px solid rgba(255, 255, 255, 0.12);
     }
 
