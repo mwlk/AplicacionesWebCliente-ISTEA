@@ -20,10 +20,10 @@ planificado (tablas, auth, storage) que se integrará en iteraciones posteriores
 ```
 AplicacionesWebCliente-ISTEA/
 ├── index.html        # landing + catálogo de artículos textiles (header, filtros, catálogo, footer)
-├── producto.html     # detalle de un artículo textil con especificaciones
-├── carrito.html      # carrito de compras + formulario para finalizar la compra
-├── contacto.html     # formulario de contacto + información de la tienda
-├── nosotros.html     # sección "quiénes somos"
+├── product.html     # detalle de un artículo textil con especificaciones
+├── cart.html      # carrito de compras + formulario para finalizar la compra
+├── contact.html     # formulario de contacto + información de la tienda
+├── about.html     # sección "quiénes somos"
 ├── style.css         # estilos de todo el sitio (header, nav, footer, catálogo, responsive)
 ├── js/
 │   └── main.js       # script base (placeholder; sin lógica de negocio todavía)
@@ -42,8 +42,16 @@ Todas las páginas comparten:
 - **Navbar** (Inicio, Catálogo, Nosotros, Carrito, Contacto), colapsable en
   mobile con menú hamburguesa (solo HTML/CSS).
 - **Footer** con copyright y redes sociales.
-- **Responsive**: desktop (catálogo en 4 columnas con sidebar de filtros),
-  tablet (3 columnas) y mobile (1 columna, nav colapsada).
+- **Responsive**: desktop (catálogo en 3 columnas con sidebar de filtros),
+  tablet (2 columnas) y mobile (1 columna, nav colapsada).
+
+## Accesibilidad (WCAG)
+
+- Requisito del proyecto: el sitio debe cumplir **WCAG AAA** (contraste de texto
+  ≥ 7:1) en todos sus estados.
+- Los colores se definen como tokens en `:root` (`style.css`) y están calibrados
+  para pasar AAA; no introducir valores mágicos de color que rompan el contraste.
+- Verificación: contraste de cada par (texto/fondo) antes de cerrar un change.
 
 ## Cómo correrlo
 

@@ -12,7 +12,7 @@ layout existente y cumple el flujo de entrega por ramas + PR.
 - Proyecto: AplicacionesWebCliente-ISTEA — práctica académica de frontend web
 - Stack: HTML5 + CSS3 + JS vanilla (sin framework, sin npm, sin bundler)
 - Tipo de sistema: sitio estático de e-commerce textil (landing/catálogo, producto, carrito, contacto, nosotros) servido tal cual desde el repo
-- Módulos principales: `index.html`, `producto.html`, `carrito.html`, `contacto.html`, `nosotros.html`, `style.css`, `js/main.js`, `img/`
+- Módulos principales: `index.html`, `product.html`, `cart.html`, `contact.html`, `about.html`, `style.css`, `js/main.js`, `img/`
 - Punto de entrada: `index.html` (abrir en browser o servidor estático local)
 - Persistencia: ninguna por ahora (catálogo estático en HTML); Supabase planificado en change futuro
 - Integraciones: Supabase planificada (no conectada); GitHub solo para el flujo de ramas + PR de entregas
@@ -32,8 +32,9 @@ layout existente y cumple el flujo de entrega por ramas + PR.
 - **Supabase**: no conectar ni usar el cliente hasta que exista un change que lo especifique (esquema y contrato de datos).
 - **Estilos**: reutilizar y respetar las clases existentes de `style.css`; no romper el layout actual.
 - **Responsive**: cada pantalla debe verse bien en desktop y mobile (hay menú hamburguesa para mobile).
-- **Accesibilidad/semántica**: usar etiquetas semánticas (header, nav, main, footer) como en el sitio actual.
-- **Navegación**: respetar los links entre `index.html`, `producto.html`, `carrito.html`, `contacto.html`, `nosotros.html`.
+- **Accesibilidad/semántica**: usar etiquetas semánticas (header, nav, main, footer) como en el sitio actual. Todo texto debe cumplir **WCAG AAA** (contraste ≥ 7:1 sobre su fondo).
+- **Tokens de color**: los colores se manejan solo vía variables de `:root` en `style.css` (calibradas a AAA). No agregar colores hardcodeados ni modificar un token sin recalcular el contraste de cada par afectado (texto sobre fondo, hover, active).
+- **Navegación**: respetar los links entre `index.html`, `product.html`, `cart.html`, `contact.html`, `about.html`.
 - **Imágenes/recursos**: usar `img/` y `favicon.ico` existentes; no apuntar a recursos externos sin necesidad.
 
 ## Comandos del proyecto
@@ -50,10 +51,12 @@ layout existente y cumple el flujo de entrega por ramas + PR.
 - ¿El design referencia archivos reales del proyecto?
 - ¿El cambio respeta HTML/CSS/JS puro (sin frameworks nuevos)?
 - ¿El cambio mantiene el estilo/estructura de `style.css` existente?
+- ¿Todo texto cumple WCAG AAA (contraste ≥ 7:1) — colores vía `:root`, sin valores hardcodeados?
 
 ## Checklist antes de cerrar
 
 - ¿Verificado visualmente en browser (desktop y mobile)?
+- ¿Contraste WCAG AAA verificado (≥ 7:1) en cada par texto/fondo nuevo o modificado?
 - ¿Navegación entre páginas sin romper?
 - ¿`tasks.md` actualizado?
 - ¿`documentation.md` completo para Confluence/Notion?
